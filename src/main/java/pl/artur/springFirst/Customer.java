@@ -1,20 +1,22 @@
 package pl.artur.springFirst;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
+@NoArgsConstructor
+@Getter
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String firstName;
     private String lastName;
-
-    protected Customer() {
-    }
 
     Customer(String firstName, String lastName) {
         this.firstName = firstName;
@@ -26,17 +28,5 @@ public class Customer {
         return String.format(
                 "Customer[id=%d, firstName='%s', lastName='%s']",
                 id, firstName, lastName);
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
     }
 }
